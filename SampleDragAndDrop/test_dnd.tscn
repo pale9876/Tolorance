@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://womvamsaigi0"]
+
+[ext_resource type="Script" path="res://SampleDragAndDrop/test_dnd.gd" id="1_kf5xh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v538j"]
+radius = 30.0666
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rfogo"]
+radius = 30.0666
+
+[node name="TestDnd" type="Node2D"]
+script = ExtResource("1_kf5xh")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(227, 146)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_v538j")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(266, 149)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_rfogo")

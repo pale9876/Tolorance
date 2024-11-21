@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cacb83vtkmm5t"]
+
+[ext_resource type="Script" path="res://surface.gd" id="1_omfj6"]
+[ext_resource type="Texture2D" uid="uid://b6raxxck1hwko" path="res://SampleSplatterSystem/Blood.png" id="1_vlohp"]
+
+[node name="Surface" type="Sprite2D"]
+texture = ExtResource("1_vlohp")
+centered = false
+script = ExtResource("1_omfj6")

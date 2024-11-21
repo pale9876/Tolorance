@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bscyyx5fsl0bs"]
+
+[ext_resource type="Shader" uid="uid://doofq76jaibxe" path="res://SampleShader/SampleShader.tres" id="1_clnw7"]
+[ext_resource type="Texture2D" uid="uid://bir3b14ndbp5u" path="res://icon.svg" id="2_wojmx"]
+[ext_resource type="Shader" path="res://SampleShader/sample_shader.gdshader" id="3_x7et3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_im0ni"]
+shader = ExtResource("1_clnw7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4umwd"]
+shader = ExtResource("3_x7et3")
+
+[node name="SampleShader" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_im0ni")
+position = Vector2(597, 304)
+scale = Vector2(4.85938, 3.70313)
+texture = ExtResource("2_wojmx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_4umwd")
+offset_right = 795.0
+offset_bottom = 471.0

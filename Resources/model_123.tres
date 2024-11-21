@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UnitResource" load_steps=2 format=3 uid="uid://foced2iqn6ry"]
+
+[ext_resource type="Script" path="res://Resources/unit_resource_base.gd" id="1_psm62"]
+
+[resource]
+script = ExtResource("1_psm62")
+unit_name = "Unknown Character"
+lv = 1
+unit_type = 1
+max_hp = 100
+atk = 10
+def = 5
+atk_spd = 1.15
+exp = 10

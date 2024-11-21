@@ -1,0 +1,23 @@
+{
+	"help": {
+		"target": "",
+		"minPermission": 0,
+		"cheats": false,
+		"requiresKeyword": false,
+		"method": "show_command_list"
+	},
+	"clear": {
+		"target": "",
+		"minPermission": 0,
+		"cheats": false,
+		"requiresKeyword": false,
+		"method": "clear_console"
+	},
+	"cheats": {
+		"target": "",
+		"minPermission": 0,
+		"cheats": false,
+		"requiresKeyword": false,
+		"method": "toggle_cheats"
+	}
+}

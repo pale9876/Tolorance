@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UnitResource" load_steps=2 format=3 uid="uid://bnhbmmf8y04p5"]
+
+[ext_resource type="Script" path="res://Resources/unit_resource_base.gd" id="1_usyxk"]
+
+[resource]
+script = ExtResource("1_usyxk")
+unit_name = "Unknown Character"
+unit_type = 2
+max_hp = 100
+atk = 1
+def = 1
+atk_spd = 0.0
+exp = 10

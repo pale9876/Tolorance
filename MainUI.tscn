@@ -1,0 +1,198 @@
+[gd_scene load_steps=12 format=3 uid="uid://hd7mgn747gh3"]
+
+[ext_resource type="Shader" path="res://CharacterProfileUI.gdshader" id="1_lfn7q"]
+[ext_resource type="Texture2D" uid="uid://c87pxictmttpl" path="res://icon.svg" id="2_fqxcv"]
+[ext_resource type="Texture2D" uid="uid://2ilg5elwt6" path="res://Sprites/UI/ProgressbarOver.png" id="2_xmyqy"]
+[ext_resource type="Texture2D" uid="uid://b2aab1q1fhlta" path="res://Sprites/UI/ProgressbarProgress.png" id="3_psa5x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gs4si"]
+bg_color = Color(0.0868482, 0.0691076, 0.0974917, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.91437, 0.767932, 0.663701, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efjc6"]
+bg_color = Color(0.152941, 0.0901961, 0.137255, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.231373, 0.105882, 0.105882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6teqm"]
+bg_color = Color(0.760784, 0.129412, 0.298039, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.952315, 0.292909, 0.429566, 1)
+
+[sub_resource type="Theme" id="Theme_0wems"]
+Panel/styles/panel = SubResource("StyleBoxFlat_gs4si")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_efjc6")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_6teqm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8n38"]
+shader = ExtResource("1_lfn7q")
+shader_parameter/effect = 0.31
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xpyx"]
+bg_color = Color(0.0784314, 0.0431373, 0.0901961, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.219608, 0.0901961, 0.0235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xynqj"]
+bg_color = Color(0.964706, 0.929412, 0.631373, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.978471, 0.901, 0.841442, 1)
+
+[node name="MainUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0wems")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -237.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/MarginContainer/MarginContainer"]
+material = SubResource("ShaderMaterial_q8n38")
+layout_mode = 2
+texture = ExtResource("2_fqxcv")
+
+[node name="HpGauge" type="TextureProgressBar" parent="HBoxContainer/Panel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("3_psa5x")
+texture_over = ExtResource("2_xmyqy")
+texture_progress = ExtResource("3_psa5x")
+tint_under = Color(0, 0.0658695, 0.0678633, 1)
+tint_progress = Color(0.239216, 1, 1, 1)
+
+[node name="Dialogue" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="InfoPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/InfoPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/InfoPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Character" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Character"
+
+[node name="Weapon" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Weapon"
+
+[node name="Attack" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Exp" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exp"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/InfoPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterName" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ": \"Character Name\""
+
+[node name="WeaponName" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ": \"Weapon Name\""
+
+[node name="AttackTimeProgress" type="ProgressBar" parent="HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 4
+step = 1.0
+show_percentage = false
+
+[node name="ExponentProgress" type="ProgressBar" parent="HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_2xpyx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xynqj")
+step = 1.0
+show_percentage = false

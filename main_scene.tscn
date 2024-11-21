@@ -1,0 +1,641 @@
+[gd_scene load_steps=21 format=3 uid="uid://bin05260oxee0"]
+
+[ext_resource type="Script" path="res://main_scene.gd" id="1_juqf6"]
+[ext_resource type="Script" path="res://Resources/unit_resource_base.gd" id="2_gyknc"]
+[ext_resource type="Resource" uid="uid://foced2iqn6ry" path="res://Resources/model_123.tres" id="2_hdphi"]
+[ext_resource type="Texture2D" uid="uid://bir3b14ndbp5u" path="res://icon.svg" id="2_o21ps"]
+[ext_resource type="Resource" uid="uid://bh5cpdqribd7e" path="res://Resources/rusty_pipe.tres" id="5_ai1hd"]
+[ext_resource type="Shader" path="res://CharacterProfileUI.gdshader" id="6_3idtq"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_8i11m"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_3w4bb"]
+[ext_resource type="Texture2D" uid="uid://b2aab1q1fhlta" path="res://Sprites/UI/ProgressbarProgress.png" id="7_io2if"]
+[ext_resource type="Texture2D" uid="uid://2ilg5elwt6" path="res://Sprites/UI/ProgressbarOver.png" id="8_8iyvn"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_o4lde"]
+
+[sub_resource type="Resource" id="Resource_7l3fw"]
+script = ExtResource("2_gyknc")
+unit_name = "Nuigurumi"
+lv = 1
+unit_type = 2
+max_hp = 100
+atk = 10
+def = 3
+atk_spd = 1.2
+exp = 10
+texture = ExtResource("2_o21ps")
+
+[sub_resource type="Resource" id="Resource_h5up2"]
+script = ExtResource("7_3w4bb")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gs4si"]
+bg_color = Color(0.0868482, 0.0691076, 0.0974917, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.91437, 0.767932, 0.663701, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efjc6"]
+bg_color = Color(0.152941, 0.0901961, 0.137255, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.231373, 0.105882, 0.105882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6teqm"]
+bg_color = Color(0.760784, 0.129412, 0.298039, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.952315, 0.292909, 0.429566, 1)
+
+[sub_resource type="Theme" id="Theme_0wems"]
+Panel/styles/panel = SubResource("StyleBoxFlat_gs4si")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_efjc6")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_6teqm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8n38"]
+shader = ExtResource("6_3idtq")
+shader_parameter/effect = 0.31
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xpyx"]
+bg_color = Color(0.0784314, 0.0431373, 0.0901961, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.219608, 0.0901961, 0.0235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xynqj"]
+bg_color = Color(0.964706, 0.929412, 0.631373, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.978471, 0.901, 0.841442, 1)
+
+[node name="MainScene" type="Node2D" node_paths=PackedStringArray("player_position", "enemy_position", "enemy_position_2", "enemy_position_3")]
+script = ExtResource("1_juqf6")
+player_position = NodePath("PlayerPosition")
+enemy_position = NodePath("EnemyPosition")
+enemy_position_2 = NodePath("EnemyPosition2")
+enemy_position_3 = NodePath("EnemyPosition3")
+model_123 = ExtResource("2_hdphi")
+nuigurumi = SubResource("Resource_7l3fw")
+rusty_pipe = ExtResource("5_ai1hd")
+
+[node name="IzumaController" type="Node" parent="."]
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+position = Vector2(-110, -50)
+script = ExtResource("6_8i11m")
+follow_mode = 3
+snap_to_pixel = true
+tween_resource = SubResource("Resource_h5up2")
+tween_on_load = false
+auto_zoom = true
+auto_zoom_max = 2.0
+_preview_noise = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-110, -50)
+ignore_rotation = false
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("8_o4lde")
+
+[node name="BackGroundSystem" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BackGroundSystem"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BackGroundSystem/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-500, -150, 500, -150, 500, 150, -500, 150)
+
+[node name="PlayerPosition" type="Node2D" parent="."]
+position = Vector2(-50, 150)
+
+[node name="EnemyPosition" type="Node2D" parent="."]
+position = Vector2(50, 150)
+
+[node name="EnemyPosition2" type="Node2D" parent="."]
+position = Vector2(109, 150)
+
+[node name="EnemyPosition3" type="Node2D" parent="."]
+position = Vector2(160, 150)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TitleUI" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/TitleUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TitleUI/CenterContainer"]
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="NewGameStartBtn" type="Button" parent="CanvasLayer/TitleUI/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Stage"
+
+[node name="LoadGameButton" type="Button" parent="CanvasLayer/TitleUI/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Continue"
+
+[node name="OptionButton" type="Button" parent="CanvasLayer/TitleUI/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Option"
+
+[node name="CharacterSelectUI" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CharacterSelectUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CharacterSelectUI/CenterContainer"]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/CharacterSelectUI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CharacterSelectUI/CenterContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CharacterSelectUI/CenterContainer/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CharacterSelectUI/CenterContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ByroadBtn" type="TextureButton" parent="CanvasLayer/CharacterSelectUI/CenterContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+disabled = true
+toggle_mode = true
+
+[node name="CorridorBtn" type="TextureButton" parent="CanvasLayer/CharacterSelectUI/CenterContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/CharacterSelectUI/CenterContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GameStartButton" type="Button" parent="CanvasLayer/CharacterSelectUI/CenterContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer/Panel2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -74.0
+offset_top = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Start"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CharacterSelectUI/CenterContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CharacterSelectUI/CenterContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer/Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="SaveFileBrowser" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/SaveFileBrowser"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 320
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 320
+theme_override_constants/margin_bottom = 180
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SaveFileBrowser/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="SaveFileSlot1Btn" type="TextureButton" parent="CanvasLayer/SaveFileBrowser/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SaveFileSlot2Btn" type="TextureButton" parent="CanvasLayer/SaveFileBrowser/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SaveFileSlot3Btn" type="TextureButton" parent="CanvasLayer/SaveFileBrowser/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SaveFileSlot4Btn" type="TextureButton" parent="CanvasLayer/SaveFileBrowser/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BacktoTitleBtn" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -621.0
+offset_top = -56.0
+offset_right = -526.0
+offset_bottom = -19.0
+text = "Title"
+
+[node name="GameUI" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0wems")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameUI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -237.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/GameUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameUI/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameUI/HBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/HBoxContainer/Panel/MarginContainer/MarginContainer"]
+material = SubResource("ShaderMaterial_q8n38")
+layout_mode = 2
+texture = ExtResource("2_o21ps")
+
+[node name="HpGauge" type="TextureProgressBar" parent="CanvasLayer/GameUI/HBoxContainer/Panel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 50.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("7_io2if")
+texture_over = ExtResource("8_8iyvn")
+texture_progress = ExtResource("7_io2if")
+tint_under = Color(0, 0.0658695, 0.0678633, 1)
+tint_progress = Color(0.239216, 1, 1, 1)
+
+[node name="Dialogue" type="Panel" parent="CanvasLayer/GameUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameUI/HBoxContainer/Dialogue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/HBoxContainer/Dialogue/MarginContainer"]
+layout_mode = 2
+
+[node name="LogTextLabel" type="RichTextLabel" parent="CanvasLayer/GameUI/HBoxContainer/Dialogue/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameUI/HBoxContainer/Dialogue/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/HBoxContainer/Dialogue/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/GameUI/HBoxContainer/Dialogue/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer/GameUI/HBoxContainer/Dialogue/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureButton3" type="TextureButton" parent="CanvasLayer/GameUI/HBoxContainer/Dialogue/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InfoPanel" type="Panel" parent="CanvasLayer/GameUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="CharacterNameContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Character" type="Label" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer/CharacterNameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Character"
+
+[node name="CharacterName" type="Label" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer/CharacterNameContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "\"Character Name\""
+horizontal_alignment = 2
+
+[node name="WeaponNameContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Weapon" type="Label" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer/WeaponNameContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Weapon"
+
+[node name="WeaponName" type="Label" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer/WeaponNameContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "\"Weapon Name\""
+horizontal_alignment = 2
+
+[node name="AttackTimingContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Attack" type="Label" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer/AttackTimingContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Attack"
+
+[node name="AttackTimeProgress" type="ProgressBar" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer/AttackTimingContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.5
+max_value = 1.0
+step = 0.001
+value = 0.5
+allow_greater = true
+
+[node name="ExponentContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Exp" type="Label" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer/ExponentContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exponent"
+
+[node name="ExponentProgress" type="ProgressBar" parent="CanvasLayer/GameUI/HBoxContainer/InfoPanel/MarginContainer/HBoxContainer/VBoxContainer/ExponentContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.5
+theme_override_styles/background = SubResource("StyleBoxFlat_2xpyx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xynqj")
+max_value = 1.0
+step = 0.001
+value = 0.5
+show_percentage = false
+
+[node name="DebugUI" type="Control" parent="CanvasLayer/GameUI"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.668
+offset_bottom = 0.039978
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameUI/DebugUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="CanvasLayer/GameUI/DebugUI/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Players" type="VBoxContainer" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Players"]
+layout_mode = 2
+
+[node name="PlayerWeapon" type="Label" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Players/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player Weapon:"
+
+[node name="Label" type="Label" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Players/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Players"]
+layout_mode = 2
+
+[node name="PlayerATKPoint" type="Label" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Players/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player Atk Point:"
+
+[node name="Label" type="Label" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Players/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Players"]
+layout_mode = 2
+
+[node name="PlayerDEFPoint" type="Label" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Players/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player Def Point:"
+
+[node name="Label" type="Label" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Players/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Players"]
+layout_mode = 2
+
+[node name="PlayerWeapon" type="Label" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Players/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player Weapon:"
+
+[node name="Label" type="Label" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Players/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Label" type="Label" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer/Control"]
+layout_mode = 1
+offset_right = 246.0
+offset_bottom = 23.0
+text = "Spawned units: "
+
+[node name="Enemies" type="VBoxContainer" parent="CanvasLayer/GameUI/DebugUI/MarginContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

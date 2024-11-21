@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://ba4vgwnbc0kxt"]
+
+[ext_resource type="Script" path="res://SampleAITutorial/ai.gd" id="1_4axgs"]
+[ext_resource type="Script" path="res://SampleAITutorial/observer.gd" id="2_yjths"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifa48"]
+size = Vector2(1518, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ptdo"]
+size = Vector2(153, 421)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t33b"]
+size = Vector2(153, 421)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dafbv"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_bf4c1"]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_4w6rh"]
+blackboard_plan = SubResource("BlackboardPlan_bf4c1")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_el1ya"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x6d28"]
+
+[node name="LimboAiTestScene" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ifa48")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-830, -186)
+shape = SubResource("RectangleShape2D_5ptdo")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(828, -188)
+shape = SubResource("RectangleShape2D_1t33b")
+
+[node name="AI" type="CharacterBody2D" parent="."]
+position = Vector2(-246, -42)
+collision_layer = 0
+platform_wall_layers = 32
+script = ExtResource("1_4axgs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI"]
+shape = SubResource("CapsuleShape2D_dafbv")
+debug_color = Color(0.980883, 0.137443, 0, 0.42)
+
+[node name="BTPlayer" type="BTPlayer" parent="AI"]
+behavior_tree = SubResource("BehaviorTree_4w6rh")
+blackboard_plan = SubResource("BlackboardPlan_el1ya")
+
+[node name="Observer" type="CharacterBody2D" parent="."]
+position = Vector2(-162, -42)
+collision_layer = 0
+script = ExtResource("2_yjths")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Observer"]
+shape = SubResource("CapsuleShape2D_x6d28")
+
+[node name="Camera2D" type="Camera2D" parent="Observer"]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

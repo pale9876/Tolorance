@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://tv6s861s1w"]
+
+[ext_resource type="Script" path="res://unit_2d.gd" id="1_7l3gv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ti332"]
+radius = 14.0
+height = 48.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abd6e"]
+bg_color = Color(0.219608, 0.0705882, 0.133333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fa54q"]
+bg_color = Color(0.900135, 0.117156, 0.0873846, 1)
+
+[node name="Unit2D" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_7l3gv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
+shape = SubResource("CapsuleShape2D_ti332")
+
+[node name="HpProgress" type="ProgressBar" parent="."]
+offset_left = -43.0
+offset_top = -79.0
+offset_right = 43.0
+offset_bottom = -62.0
+theme_override_styles/background = SubResource("StyleBoxFlat_abd6e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fa54q")
+step = 1.0
+value = 50.0
+show_percentage = false
