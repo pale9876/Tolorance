@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://r1o7enie2a7l"
+path="res://.godot/imported/vertSlash.aseprite-1624d9664a4140e11b48c6ba1b74f12b.res"
+
+[deps]
+
+source_file="res://ArtWIP/animation/model123Animations/vertSlash.aseprite"
+dest_files=["res://.godot/imported/vertSlash.aseprite-1624d9664a4140e11b48c6ba1b74f12b.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bln4g434b1sol"
+path="res://.godot/imported/character_pallete.aseprite-da9d35a9001a596eda0f5d4100869285.res"
+
+[deps]
+
+source_file="res://ArtWIP/ArtConst/UI/character_pallete.aseprite"
+dest_files=["res://.godot/imported/character_pallete.aseprite-da9d35a9001a596eda0f5d4100869285.res"]
+
+[params]
+

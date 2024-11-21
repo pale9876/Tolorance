@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dubvl6pbioxve"
+path="res://.godot/imported/upperSlash.aseprite-bc9190c9f106938590884598fff5b6f3.res"
+
+[deps]
+
+source_file="res://ArtWIP/animation/model123Animations/upperSlash.aseprite"
+dest_files=["res://.godot/imported/upperSlash.aseprite-bc9190c9f106938590884598fff5b6f3.res"]
+
+[params]
+

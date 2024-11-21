@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b488d4c8fkjit"
+path="res://.godot/imported/sampleAnimation.aseprite-87045626bc06f825f2366079ffa59a70.res"
+
+[deps]
+
+source_file="res://ArtWIP/ArtConst/AllUnused/sampleAnimation.aseprite"
+dest_files=["res://.godot/imported/sampleAnimation.aseprite-87045626bc06f825f2366079ffa59a70.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cucm868473tls"
+path="res://.godot/imported/cardimageExtend.aseprite-05928e1bea450f3be653030ac6c49c33.res"
+
+[deps]
+
+source_file="res://ArtWIP/ArtConst/UI/cardimageExtend.aseprite"
+dest_files=["res://.godot/imported/cardimageExtend.aseprite-05928e1bea450f3be653030ac6c49c33.res"]
+
+[params]
+

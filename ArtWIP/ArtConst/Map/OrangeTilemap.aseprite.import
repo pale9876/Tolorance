@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bbx8nhemdvive"
+path="res://.godot/imported/OrangeTilemap.aseprite-e18505098dbdf0f6803bc499205b43db.res"
+
+[deps]
+
+source_file="res://ArtWIP/ArtConst/Map/OrangeTilemap.aseprite"
+dest_files=["res://.godot/imported/OrangeTilemap.aseprite-e18505098dbdf0f6803bc499205b43db.res"]
+
+[params]
+

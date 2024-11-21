@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://10m12chm8ir"
+path="res://.godot/imported/monitor.aseprite-3496d7f5c640a886aa8295a425891835.res"
+
+[deps]
+
+source_file="res://ArtWIP/ArtConst/Map/monitor.aseprite"
+dest_files=["res://.godot/imported/monitor.aseprite-3496d7f5c640a886aa8295a425891835.res"]
+
+[params]
+

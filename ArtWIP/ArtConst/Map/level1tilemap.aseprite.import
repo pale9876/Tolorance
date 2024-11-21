@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cfq0v0m8iygvv"
+path="res://.godot/imported/level1tilemap.aseprite-30940f5ae654fbf32b91053089e5fae3.res"
+
+[deps]
+
+source_file="res://ArtWIP/ArtConst/Map/level1tilemap.aseprite"
+dest_files=["res://.godot/imported/level1tilemap.aseprite-30940f5ae654fbf32b91053089e5fae3.res"]
+
+[params]
+

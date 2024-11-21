@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://biupcv14naj4w"
+path="res://.godot/imported/pointLight.aseprite-649839b248900ab731d4a9291e421a24.res"
+
+[deps]
+
+source_file="res://ArtWIP/ArtConst/UI/pointLight.aseprite"
+dest_files=["res://.godot/imported/pointLight.aseprite-649839b248900ab731d4a9291e421a24.res"]
+
+[params]
+

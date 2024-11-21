@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://drxb3o5imobfi"
+path="res://.godot/imported/healthBaroutline.aseprite-b4102b15bfbd56979bd60ff56b5243a2.res"
+
+[deps]
+
+source_file="res://ArtWIP/ArtConst/UI/healthBaroutline.aseprite"
+dest_files=["res://.godot/imported/healthBaroutline.aseprite-b4102b15bfbd56979bd60ff56b5243a2.res"]
+
+[params]
+

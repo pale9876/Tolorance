@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c20l0qjkraoy7"
+path="res://.godot/imported/Blood.aseprite-644e5649a5ce8555da3563b655dc334b.res"
+
+[deps]
+
+source_file="res://ArtWIP/animation/Blood.aseprite"
+dest_files=["res://.godot/imported/Blood.aseprite-644e5649a5ce8555da3563b655dc334b.res"]
+
+[params]
+

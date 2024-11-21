@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dssrjr2nfv2cb"
+path="res://.godot/imported/level1Decoration.aseprite-d2cc650a3bbed6adad17b45539f737ae.res"
+
+[deps]
+
+source_file="res://ArtWIP/ArtConst/Map/level1Decoration.aseprite"
+dest_files=["res://.godot/imported/level1Decoration.aseprite-d2cc650a3bbed6adad17b45539f737ae.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cwarrn20exwq5"
+path="res://.godot/imported/hpbar.aseprite-b2b579aa23c97dfc04890c3b042eaf2d.res"
+
+[deps]
+
+source_file="res://ArtWIP/ArtConst/UI/hpbar.aseprite"
+dest_files=["res://.godot/imported/hpbar.aseprite-b2b579aa23c97dfc04890c3b042eaf2d.res"]
+
+[params]
+

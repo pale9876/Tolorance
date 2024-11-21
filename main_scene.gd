@@ -11,11 +11,9 @@ enum TitleState {
 @export var enemy_position_2:Node2D
 @export var enemy_position_3:Node2D
 
-
 @export_group("UnitResources")
 @export var model_123:UnitResource
 @export var nuigurumi:UnitResource
-
 
 @export_group("Unit2DBaseScenes")
 @export var models: Dictionary = {
@@ -94,26 +92,20 @@ func _physics_process(delta: float) -> void:
 func _exit_tree() -> void:
 	thread.wait_to_finish()
 
-
 func _on_new_game_start_btn_pressed() -> void:
 	pass
-
 
 func _on_load_game_btn_bressed() -> void:
 	pass
 
-
 func _on_option_btn_pressed() -> void:
 	pass
-
 
 func _on_back_to_title_btn_pressed() -> void:
 	pass
 
-
 func _on_player_level_up(max_exp: int) -> void:
 	log_text_label.add_text("Player Level Up : %d" % player.player_lv)
-
 
 
 func _on_player_death(unit: Unit) -> void:
@@ -284,7 +276,6 @@ class Player extends Unit:
 		self.player_exp += value
 
 
-
 class Unit extends Node:
 
 	static var spawned_unit_cnt: int = 0
@@ -356,15 +347,12 @@ class Unit extends Node:
 
 	func move_entered() -> void:
 		pass
-	
-	
+
 	func move_update(delta: float) -> void:
 		pass
 
-
 	func hurt_entered() -> void:
 		pass
-
 
 	func hurt_updated(delta: float) -> void:
 		pass

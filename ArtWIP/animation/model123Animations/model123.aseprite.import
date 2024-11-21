@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://wxmq4dkbwo7x"
+path="res://.godot/imported/model123.aseprite-7c88f54a9d85e39b27db97dea1c33414.res"
+
+[deps]
+
+source_file="res://ArtWIP/animation/model123Animations/model123.aseprite"
+dest_files=["res://.godot/imported/model123.aseprite-7c88f54a9d85e39b27db97dea1c33414.res"]
+
+[params]
+

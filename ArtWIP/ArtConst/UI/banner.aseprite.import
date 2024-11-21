@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://rnfbi8kwle04"
+path="res://.godot/imported/banner.aseprite-3b5a9afbdb136a23f4688d8b09e6a2a1.res"
+
+[deps]
+
+source_file="res://ArtWIP/ArtConst/UI/banner.aseprite"
+dest_files=["res://.godot/imported/banner.aseprite-3b5a9afbdb136a23f4688d8b09e6a2a1.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cbgw3gmju4xmb"
+path="res://.godot/imported/BlackLilith.aseprite-18ecfa87e541f9a7471c221028925a42.res"
+
+[deps]
+
+source_file="res://ArtWIP/animation/BlackLilith.aseprite"
+dest_files=["res://.godot/imported/BlackLilith.aseprite-18ecfa87e541f9a7471c221028925a42.res"]
+
+[params]
+

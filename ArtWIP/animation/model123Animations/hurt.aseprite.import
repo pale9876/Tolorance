@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://civjh3u6eg3rj"
+path="res://.godot/imported/hurt.aseprite-5a5dea782efe3d0c70a29ab2f1802eed.res"
+
+[deps]
+
+source_file="res://ArtWIP/animation/model123Animations/hurt.aseprite"
+dest_files=["res://.godot/imported/hurt.aseprite-5a5dea782efe3d0c70a29ab2f1802eed.res"]
+
+[params]
+

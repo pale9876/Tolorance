@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cp3q05pevd0yt"
+path="res://.godot/imported/walk.aseprite-825d3d81925b28ff30a66dd764517c7f.res"
+
+[deps]
+
+source_file="res://ArtWIP/animation/model123Animations/walk.aseprite"
+dest_files=["res://.godot/imported/walk.aseprite-825d3d81925b28ff30a66dd764517c7f.res"]
+
+[params]
+
