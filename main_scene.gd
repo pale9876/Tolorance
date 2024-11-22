@@ -14,7 +14,6 @@ enum TitleState {
 @export var enemy_position_2:Node2D
 @export var enemy_position_3:Node2D
 
-
 @onready var phantom_camera: PhantomCamera2D = $"PhantomCamera2D"
 
 @onready var title_ui: Control = %TitleUI
@@ -61,7 +60,8 @@ func _process(delta: float) -> void:
 
 
 func _exit_tree() -> void:
-	thread.wait_to_finish()
+	if thread.is_started():
+		thread.wait_to_finish()
 
 
 func _on_new_game_start_btn_pressed() -> void:
@@ -92,7 +92,7 @@ func _on_player_death() -> void:
 
 
 func _on_log_appended(msg: String):
-	log_text_label.add_text(msg)
+	log_text_label.append_text(msg+"\n")
 
 
 func _on_player_spawned(player: Node) -> void:
