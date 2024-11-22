@@ -64,9 +64,10 @@ func _on_player_death(unit: Unit) -> void:
 
 func _on_player_attacked(player: Unit, damage: int) -> void:
 	if enemies.size() > 0:
-		enemies[0].hp -= damage
+		var e_name:StringName = enemies[0].name
 		
-		log_append.emit("Player attacked %d damage to -> %s" % [damage, str(enemies[0].name)])
+		enemies[0].hp -= damage
+		log_append.emit("Player attacked %d damage to -> %s" % [damage, str(e_name)])
 
 func _on_unit_attacked(unit:Unit, damage: int) -> void:
 	if player.hp != 0 and not player.is_dead:

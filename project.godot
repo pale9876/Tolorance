@@ -20,7 +20,6 @@ ConsoleDataManager="*res://addons/simply-console/singletons/console_data_manager
 Whiz="*res://Whiz.gd"
 SyncManager="*res://addons/delta_rollback/SyncManager.gd"
 SyncReplay="*res://addons/delta_rollback/SyncReplay.gd"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
