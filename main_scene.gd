@@ -14,11 +14,6 @@ enum TitleState {
 @export var enemy_position_2:Node2D
 @export var enemy_position_3:Node2D
 
-
-@export_group("WeaponResources")
-@export var rusty_pipe:WeaponResource
-
-
 @onready var phantom_camera: PhantomCamera2D = $"PhantomCamera2D"
 
 @onready var title_ui: Control = %TitleUI
@@ -44,7 +39,11 @@ var mouse_pos: Vector2
 
 
 func _ready() -> void:
-	unit_controller.log_append.connect(_on_log_appended)
+	unit_controller.update_player_hp_progress.connect( _update_player_hp_progress )
+	unit_controller.update_player_atk_time_progress.connect( _update_player_exp_progress )
+	unit_controller.log_append.connect( _on_log_appended )
+	unit_controller.player_spawned.connect( _on_player_spawned )
+	
 	
 	new_game_start_btn.button_up.connect(_on_new_game_start_btn_pressed)
 	load_game_btn.button_up.connect(_on_load_game_btn_bressed)
@@ -61,7 +60,8 @@ func _process(delta: float) -> void:
 
 
 func _exit_tree() -> void:
-	thread.wait_to_finish()
+	if thread.is_started():
+		thread.wait_to_finish()
 
 
 func _on_new_game_start_btn_pressed() -> void:
@@ -77,13 +77,34 @@ func _on_back_to_title_btn_pressed() -> void:
 	pass
 
 
-func update_player_hp_progress(hp: int) -> void:
+func _update_player_hp_progress(hp: int) -> void:
 	player_hp_gauge.value = hp
 
 
-func update_player_exp_progress(player_exp: int) -> void:
-	exp_progress.value = player_exp
+func _update_player_exp_progress(value: int) -> void:
+	exp_progress.value = value
+
+func _on_player_level_up(value: int) -> void:
+	pass
+
+func _on_player_death() -> void:
+	pass
 
 
 func _on_log_appended(msg: String):
-	log_text_label.add_text(msg)
+	log_text_label.append_text(msg+"\n")
+
+
+func _on_player_spawned(player: Node) -> void:
+	player_hp_gauge.max_value = player.max_hp
+	player_hp_gauge.value = player.hp
+
+	atk_time_progress.value = player.atk_time / player.default_atk_time
+
+	exp_progress.max_value = player.player_max_exp
+	exp_progress.value = player.player_exp
+
+	player.player_level_up.connect( _on_player_level_up )
+	player.player_health_changed.connect(_update_player_hp_progress)
+	player.player_exp_changed.connect(_update_player_exp_progress)
+	player.death.connect(_on_player_death)

@@ -7,12 +7,18 @@ signal log_append(msg: String)
 signal update_player_atk_time_progress(value: float)
 signal update_player_hp_progress(value: int)
 
+signal player_spawned(unit: Node)
+
+
 @export_group("PhantomCamera")
 @export var phantom_camera: PhantomCamera2D
 
 @export_group("UnitResources")
 @export var model_123:UnitResource
 @export var nuigurumi:UnitResource
+
+@export_group("WeaponResources")
+@export var rusty_pipe:WeaponResource
 
 @export_group("Unit2DBaseScenes")
 @export var models: Dictionary = {
@@ -114,6 +120,25 @@ func spawn_unit(
 	unit.death.connect(self._on_unit_death)
 
 	phantom_camera.append_follow_targets(unit.body)
+
+
+func spawn_player(
+				unit_res: UnitResource = model_123,
+					weapon_res: WeaponResource = rusty_pipe,
+						unit_scene: PackedScene = models.base_chara,
+							at_node2d: Node2D = get_tree().get_first_node_in_group("PlayerSpawnMark")
+								) -> void:
+
+	player = Player.new(unit_res, weapon_res, unit_scene, at_node2d)
+
+	add_child(player)
+
+	units.append(player)
+
+	player.attack.connect(_on_player_attacked)
+
+	phantom_camera.append_follow_targets(player.body)
+
 
 
 class Unit extends Node:

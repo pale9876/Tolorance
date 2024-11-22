@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bin05260oxee0"]
+[gd_scene load_steps=23 format=3 uid="uid://bin05260oxee0"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_juqf6"]
 [ext_resource type="Texture2D" uid="uid://bir3b14ndbp5u" path="res://icon.svg" id="2_o21ps"]
-[ext_resource type="Resource" uid="uid://bh5cpdqribd7e" path="res://Resources/rusty_pipe.tres" id="5_ai1hd"]
+[ext_resource type="Script" path="res://Resources/unit_resource_base.gd" id="3_6nt8o"]
+[ext_resource type="Script" path="res://Resources/weapon_resource_base.gd" id="4_0el1a"]
 [ext_resource type="Shader" path="res://CharacterProfileUI.gdshader" id="6_3idtq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_8i11m"]
 [ext_resource type="Script" path="res://unit_controller.gd" id="6_tg8it"]
@@ -10,6 +11,35 @@
 [ext_resource type="Texture2D" uid="uid://b2aab1q1fhlta" path="res://Sprites/UI/ProgressbarProgress.png" id="7_io2if"]
 [ext_resource type="Texture2D" uid="uid://2ilg5elwt6" path="res://Sprites/UI/ProgressbarOver.png" id="8_8iyvn"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_o4lde"]
+
+[sub_resource type="Resource" id="Resource_btjt3"]
+script = ExtResource("3_6nt8o")
+unit_name = "Unknown Character"
+lv = 1
+unit_type = 2
+max_hp = 100
+atk = 10
+def = 5
+atk_spd = 1.0
+exp = 10
+
+[sub_resource type="Resource" id="Resource_fke5j"]
+script = ExtResource("3_6nt8o")
+unit_name = "Unknown Character"
+lv = 1
+unit_type = 2
+max_hp = 100
+atk = 5
+def = 1
+atk_spd = 1.0
+exp = 10
+
+[sub_resource type="Resource" id="Resource_cq242"]
+script = ExtResource("4_0el1a")
+weapon_name = &"RustyPipe"
+weapon_type = 0
+atk_point = 1
+atk_spd_point = 0.1
 
 [sub_resource type="Resource" id="Resource_h5up2"]
 script = ExtResource("7_3w4bb")
@@ -77,10 +107,13 @@ player_position = NodePath("PlayerPosition")
 enemy_position = NodePath("EnemyPosition")
 enemy_position_2 = NodePath("EnemyPosition2")
 enemy_position_3 = NodePath("EnemyPosition3")
-rusty_pipe = ExtResource("5_ai1hd")
 
-[node name="UnitController" type="Node" parent="."]
+[node name="UnitController" type="Node" parent="." node_paths=PackedStringArray("phantom_camera")]
 script = ExtResource("6_tg8it")
+phantom_camera = NodePath("../PhantomCamera2D")
+model_123 = SubResource("Resource_btjt3")
+nuigurumi = SubResource("Resource_fke5j")
+rusty_pipe = SubResource("Resource_cq242")
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 position = Vector2(-110, -50)
