@@ -104,7 +104,7 @@ func _on_unit_death(unit: Unit) -> void:
 func spawn_unit(
 				unit_res: UnitResource = nuigurumi,
 					model: PackedScene = models.base_chara,
-						at_node2d: Node2D = get_tree().get_first_node_in_group("EnemySpawnMarks")
+						at_node2d: Node2D = get_tree().get_first_node_in_group("EnemySpawnMark")
 							) -> void:
 	
 	var unit: Unit = Unit.new(unit_res, model, at_node2d)

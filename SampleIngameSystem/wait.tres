@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ActionCardResource" load_steps=2 format=3 uid="uid://26vcvklsnq4y"]
+
+[ext_resource type="Script" path="res://SampleIngameSystem/ActionCardResource.gd" id="1_jc6hq"]
+
+[resource]
+script = ExtResource("1_jc6hq")
+action_time = 30.0

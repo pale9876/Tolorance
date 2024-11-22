@@ -150,13 +150,13 @@ polygon = PackedVector2Array(-500, -150, 500, -150, 500, 150, -500, 150)
 [node name="PlayerPosition" type="Node2D" parent="." groups=["PlayerSpawnMark"]]
 position = Vector2(-50, 150)
 
-[node name="EnemyPosition" type="Node2D" parent="." groups=["EnemySpawnMarks"]]
+[node name="EnemyPosition" type="Node2D" parent="." groups=["EnemySpawnMark"]]
 position = Vector2(50, 150)
 
-[node name="EnemyPosition2" type="Node2D" parent="." groups=["EnemySpawnMarks"]]
+[node name="EnemyPosition2" type="Node2D" parent="." groups=["EnemySpawnMark"]]
 position = Vector2(109, 150)
 
-[node name="EnemyPosition3" type="Node2D" parent="." groups=["EnemySpawnMarks"]]
+[node name="EnemyPosition3" type="Node2D" parent="." groups=["EnemySpawnMark"]]
 position = Vector2(160, 150)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

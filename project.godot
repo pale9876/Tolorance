@@ -17,8 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Whiz="*res://Whiz.gd"
-SyncManager="*res://addons/delta_rollback/SyncManager.gd"
-SyncReplay="*res://addons/delta_rollback/SyncReplay.gd"
+ConsoleDataManager="*res://addons/simply-console/singletons/console_data_manager.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
@@ -30,7 +29,12 @@ window/size/window_height_override=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/resource_databases/editor_only/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/resource_databases/editor_only/plugin.cfg", "res://addons/simply-console/plugin.cfg")
+
+[global_group]
+
+PlayerSpawnMark=""
+EnemySpawnMark=""
 
 [input]
 
