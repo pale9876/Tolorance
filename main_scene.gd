@@ -43,8 +43,7 @@ func _ready() -> void:
 	unit_controller.update_player_atk_time_progress.connect( _update_player_exp_progress )
 	unit_controller.log_append.connect( _on_log_appended )
 	unit_controller.player_spawned.connect( _on_player_spawned )
-	
-	
+
 	new_game_start_btn.button_up.connect(_on_new_game_start_btn_pressed)
 	load_game_btn.button_up.connect(_on_load_game_btn_bressed)
 	option_btn.button_up.connect(_on_option_btn_pressed)
@@ -76,10 +75,8 @@ func _on_option_btn_pressed() -> void:
 func _on_back_to_title_btn_pressed() -> void:
 	pass
 
-
 func _update_player_hp_progress(hp: int) -> void:
 	player_hp_gauge.value = hp
-
 
 func _update_player_exp_progress(value: int) -> void:
 	exp_progress.value = value
@@ -92,7 +89,7 @@ func _on_player_death() -> void:
 
 
 func _on_log_appended(msg: String):
-	log_text_label.append_text(msg+"\n")
+	log_text_label.append_text(msg + "\n")
 
 
 func _on_player_spawned(player: Node) -> void:
@@ -105,6 +102,6 @@ func _on_player_spawned(player: Node) -> void:
 	exp_progress.value = player.player_exp
 
 	player.player_level_up.connect( _on_player_level_up )
-	player.player_health_changed.connect(_update_player_hp_progress)
-	player.player_exp_changed.connect(_update_player_exp_progress)
-	player.death.connect(_on_player_death)
+	player.player_health_changed.connect( _update_player_hp_progress )
+	player.player_exp_changed.connect( _update_player_exp_progress )
+	player.death.connect( _on_player_death )

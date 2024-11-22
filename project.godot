@@ -16,7 +16,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ConsoleDataManager="*res://addons/simply-console/singletons/console_data_manager.gd"
 Whiz="*res://Whiz.gd"
 SyncManager="*res://addons/delta_rollback/SyncManager.gd"
 SyncReplay="*res://addons/delta_rollback/SyncReplay.gd"
@@ -31,7 +30,7 @@ window/size/window_height_override=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/delta_rollback/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/resource_databases/editor_only/plugin.cfg", "res://addons/simply-console/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/godot-sqlite/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/resource_databases/editor_only/plugin.cfg")
 
 [input]
 

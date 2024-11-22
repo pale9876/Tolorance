@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://bin05260oxee0"]
+[gd_scene load_steps=24 format=3 uid="uid://bin05260oxee0"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_juqf6"]
+[ext_resource type="Script" path="res://SceneController.gd" id="2_2hwr7"]
 [ext_resource type="Texture2D" uid="uid://bir3b14ndbp5u" path="res://icon.svg" id="2_o21ps"]
 [ext_resource type="Script" path="res://Resources/unit_resource_base.gd" id="3_6nt8o"]
 [ext_resource type="Script" path="res://Resources/weapon_resource_base.gd" id="4_0el1a"]
@@ -107,6 +108,9 @@ player_position = NodePath("PlayerPosition")
 enemy_position = NodePath("EnemyPosition")
 enemy_position_2 = NodePath("EnemyPosition2")
 enemy_position_3 = NodePath("EnemyPosition3")
+
+[node name="SceneController" type="AnimationPlayer" parent="."]
+script = ExtResource("2_2hwr7")
 
 [node name="UnitController" type="Node" parent="." node_paths=PackedStringArray("phantom_camera")]
 script = ExtResource("6_tg8it")
@@ -557,6 +561,7 @@ value = 0.5
 show_percentage = false
 
 [node name="DebugUI" type="Control" parent="CanvasLayer/GameUI"]
+visible = false
 layout_mode = 1
 anchor_right = 1.0
 anchor_bottom = 0.668

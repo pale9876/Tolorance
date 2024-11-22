@@ -1,1 +1,0 @@
-class_name SGSamplePlayer extends SGCharacterBody2D
