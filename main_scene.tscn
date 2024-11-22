@@ -1,28 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://bin05260oxee0"]
+[gd_scene load_steps=19 format=3 uid="uid://bin05260oxee0"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_juqf6"]
-[ext_resource type="Script" path="res://Resources/unit_resource_base.gd" id="2_gyknc"]
-[ext_resource type="Resource" uid="uid://foced2iqn6ry" path="res://Resources/model_123.tres" id="2_hdphi"]
 [ext_resource type="Texture2D" uid="uid://bir3b14ndbp5u" path="res://icon.svg" id="2_o21ps"]
 [ext_resource type="Resource" uid="uid://bh5cpdqribd7e" path="res://Resources/rusty_pipe.tres" id="5_ai1hd"]
 [ext_resource type="Shader" path="res://CharacterProfileUI.gdshader" id="6_3idtq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_8i11m"]
+[ext_resource type="Script" path="res://unit_controller.gd" id="6_tg8it"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_3w4bb"]
 [ext_resource type="Texture2D" uid="uid://b2aab1q1fhlta" path="res://Sprites/UI/ProgressbarProgress.png" id="7_io2if"]
 [ext_resource type="Texture2D" uid="uid://2ilg5elwt6" path="res://Sprites/UI/ProgressbarOver.png" id="8_8iyvn"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_o4lde"]
-
-[sub_resource type="Resource" id="Resource_7l3fw"]
-script = ExtResource("2_gyknc")
-unit_name = "Nuigurumi"
-lv = 1
-unit_type = 2
-max_hp = 100
-atk = 10
-def = 3
-atk_spd = 1.2
-exp = 10
-texture = ExtResource("2_o21ps")
 
 [sub_resource type="Resource" id="Resource_h5up2"]
 script = ExtResource("7_3w4bb")
@@ -83,17 +70,17 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.978471, 0.901, 0.841442, 1)
 
-[node name="MainScene" type="Node2D" node_paths=PackedStringArray("player_position", "enemy_position", "enemy_position_2", "enemy_position_3")]
+[node name="MainScene" type="Node2D" node_paths=PackedStringArray("unit_controller", "player_position", "enemy_position", "enemy_position_2", "enemy_position_3")]
 script = ExtResource("1_juqf6")
+unit_controller = NodePath("UnitController")
 player_position = NodePath("PlayerPosition")
 enemy_position = NodePath("EnemyPosition")
 enemy_position_2 = NodePath("EnemyPosition2")
 enemy_position_3 = NodePath("EnemyPosition3")
-model_123 = ExtResource("2_hdphi")
-nuigurumi = SubResource("Resource_7l3fw")
 rusty_pipe = ExtResource("5_ai1hd")
 
-[node name="IzumaController" type="Node" parent="."]
+[node name="UnitController" type="Node" parent="."]
+script = ExtResource("6_tg8it")
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 position = Vector2(-110, -50)
@@ -123,16 +110,16 @@ script = ExtResource("8_o4lde")
 build_mode = 1
 polygon = PackedVector2Array(-500, -150, 500, -150, 500, 150, -500, 150)
 
-[node name="PlayerPosition" type="Node2D" parent="."]
+[node name="PlayerPosition" type="Node2D" parent="." groups=["PlayerSpawnMark"]]
 position = Vector2(-50, 150)
 
-[node name="EnemyPosition" type="Node2D" parent="."]
+[node name="EnemyPosition" type="Node2D" parent="." groups=["EnemySpawnMarks"]]
 position = Vector2(50, 150)
 
-[node name="EnemyPosition2" type="Node2D" parent="."]
+[node name="EnemyPosition2" type="Node2D" parent="." groups=["EnemySpawnMarks"]]
 position = Vector2(109, 150)
 
-[node name="EnemyPosition3" type="Node2D" parent="."]
+[node name="EnemyPosition3" type="Node2D" parent="." groups=["EnemySpawnMarks"]]
 position = Vector2(160, 150)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
