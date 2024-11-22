@@ -76,8 +76,8 @@ func _on_player_attacked(player: Unit, damage: int) -> void:
 		log_append.emit("Player attacked %d damage to -> %s" % [damage, str(e_name)])
 
 func _on_unit_attacked(unit:Unit, damage: int) -> void:
-	if player.hp != 0 and not player.is_dead:
-		player.hp -= damage
+	if player.hp > 0 and not player.is_dead:
+		player.hp = clamp(0, player.hp - damage, player.max_hp)
 		log_append.emit("%s attacked Player! damaged: %d" % [str(unit.name), damage])
 		player.player_health_changed.emit(player.hp)
 
