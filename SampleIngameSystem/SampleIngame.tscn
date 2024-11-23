@@ -21,7 +21,7 @@ resource_name = "new_animation"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GridContainer/Panel/Card:position:x")
+tracks/0/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GridContainer/Panel/Card:position:y")
+tracks/1/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -46,7 +46,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GridContainer/Panel/Card:position:x")
+tracks/0/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -57,7 +57,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GridContainer/Panel/Card:position:y")
+tracks/1/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -71,7 +71,7 @@ resource_name = "CardExited"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GridContainer/Panel/Card:position:x")
+tracks/0/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,7 +82,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GridContainer/Panel/Card:position:y")
+tracks/1/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -158,79 +158,93 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -640.0
-offset_top = 256.0
+offset_top = 128.0
 offset_right = 640.0
 offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainUI/MarginContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer"]
+[node name="PMonitor" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlayerActionCardDeck" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer"]
+[node name="PlayerActionCardDeck" type="Control" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
+size_flags_stretch_ratio = 2.25
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -108.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/MarginContainer/Panel"]
+layout_mode = 2
+offset_right = 673.0
+offset_bottom = 108.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 6
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/GridContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/MarginContainer/Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Card" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/GridContainer/Panel"]
+[node name="Card" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/MarginContainer/Panel/GridContainer/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -52.0
-offset_right = 51.0
-offset_bottom = 52.0
+offset_left = -54.0
+offset_top = -54.0
+offset_right = 48.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/GridContainer/Panel/Card"]
-root_node = NodePath("../../../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/MarginContainer/Panel/GridContainer/Panel/Card"]
+root_node = NodePath("../../../../../..")
 libraries = {
 "": SubResource("AnimationLibrary_bnbly")
 }
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/GridContainer"]
+[node name="Panel2" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/MarginContainer/Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel3" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/GridContainer"]
+[node name="Panel3" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/MarginContainer/Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel4" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/GridContainer"]
+[node name="Panel4" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/MarginContainer/Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel5" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/GridContainer"]
+[node name="Panel5" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/MarginContainer/Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel6" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/GridContainer"]
+[node name="Panel6" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/MarginContainer/Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
