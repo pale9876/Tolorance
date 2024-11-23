@@ -21,7 +21,7 @@ max_hp = 100
 atk = 10
 def = 5
 atk_spd = 1.0
-exp = 10
+experience = 10
 
 [sub_resource type="Resource" id="Resource_fke5j"]
 script = ExtResource("3_6nt8o")
@@ -32,7 +32,7 @@ max_hp = 100
 atk = 5
 def = 1
 atk_spd = 1.0
-exp = 10
+experience = 10
 
 [sub_resource type="Resource" id="Resource_cq242"]
 script = ExtResource("4_0el1a")

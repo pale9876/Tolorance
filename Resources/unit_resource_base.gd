@@ -18,7 +18,7 @@ enum UnitType {
 @export var atk: int = 1
 @export var def: int = 1
 @export var atk_spd: float
-@export var exp: int = 10
+@export var experience: int = 10
 
 @export_group("Sprite")
 @export var texture: Texture2D
