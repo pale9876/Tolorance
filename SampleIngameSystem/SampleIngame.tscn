@@ -21,24 +21,28 @@ resource_name = "new_animation"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:x")
+tracks/0/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(155.5, 0, 0, 0, 0, 0, -0.99, 1.5, 0.25, 0),
 "times": PackedFloat32Array(0.01, 1)
+}
+
+[sub_resource type="Animation" id="Animation_ntnnr"]
+resource_name = "CardExited"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.5, -0.25, 0, 0, -28, -47.5, -0.233333, -1, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4)
 }
 
 [sub_resource type="Animation" id="Animation_cp5pn"]
@@ -46,49 +50,13 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:x")
+tracks/0/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_ntnnr"]
-resource_name = "CardExited"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/Panel/GridContainer/Panel/Card:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-0.5, -0.25, 0, 0.32, -3, -44.5, -0.1, 33, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bnbly"]
@@ -205,16 +173,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Card" type="Panel" parent="CanvasLayer/MainUI/MarginContainer/HBoxContainer/PlayerActionCardDeck/MarginContainer/Panel/GridContainer/Panel"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -54.0
+offset_left = -50.0
 offset_top = -54.0
-offset_right = 48.0
-offset_bottom = 50.0
+offset_right = 50.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 
