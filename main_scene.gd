@@ -21,7 +21,7 @@ enum TitleState {
 
 @onready var character_name: Label = %CharacterName
 @onready var weapon_name: Label = %WeaponName
-@onready var exp_progress: ProgressBar = %ExponentProgress
+@onready var experience_progress: ProgressBar = %ExponentProgress
 @onready var atk_time_progress: ProgressBar = %AttackTimeProgress
 @onready var player_hp_gauge: TextureProgressBar = %HpGauge
 
@@ -40,7 +40,7 @@ var mouse_pos: Vector2
 
 func _ready() -> void:
 	unit_controller.update_player_hp_progress.connect( _update_player_hp_progress )
-	unit_controller.update_player_atk_time_progress.connect( _update_player_exp_progress )
+	unit_controller.update_player_atk_time_progress.connect( _update_player_experience_progress )
 	unit_controller.log_append.connect( _on_log_appended )
 	unit_controller.player_spawned.connect( _on_player_spawned )
 	
@@ -81,8 +81,8 @@ func _update_player_hp_progress(hp: int) -> void:
 	player_hp_gauge.value = hp
 
 
-func _update_player_exp_progress(value: int) -> void:
-	exp_progress.value = value
+func _update_player_experience_progress(value: int) -> void:
+	experience_progress.value = value
 
 func _on_player_level_up(value: int) -> void:
 	pass
@@ -101,10 +101,10 @@ func _on_player_spawned(player: Node) -> void:
 
 	atk_time_progress.value = player.atk_time / player.default_atk_time
 
-	exp_progress.max_value = player.player_max_exp
-	exp_progress.value = player.player_exp
+	experience_progress.max_value = player.player_max_experience
+	experience_progress.value = player.player_experience
 
 	player.player_level_up.connect( _on_player_level_up )
 	player.player_health_changed.connect(_update_player_hp_progress)
-	player.player_exp_changed.connect(_update_player_exp_progress)
+	player.player_experience_changed.connect(_update_player_experience_progress)
 	player.death.connect(_on_player_death)

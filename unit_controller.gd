@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 				unit.atk_time -= delta * unit.atk_spd
 
 
-func _on_player_level_up(max_exp: int) -> void:
+func _on_player_level_up(max_experience: int) -> void:
 	log_append.emit(("Player Level Up : %d" % player.player_lv))
 
 
@@ -90,7 +90,7 @@ func _on_unit_death(unit: Unit) -> void:
 		units.erase(unit)
 	
 	if player != null:
-		player.get_exp(unit.exp)
+		player.get_experience(unit.experience)
 	
 	unit.spawned_unit_cnt -= 1
 
@@ -168,7 +168,7 @@ class Unit extends Node:
 	var atk: int = 1
 	var def: int = 1
 	var atk_spd: float = 1.0
-	var exp: int = 10
+	var experience: int = 10
 
 	var default_atk_time: float = 2.0
 	var atk_time: float = 2.0:
@@ -195,7 +195,7 @@ class Unit extends Node:
 		self.atk = unit_stats.atk
 		self.def = unit_stats.def
 		self.atk_spd = unit_stats.atk_spd
-		self.exp = unit_stats.exp
+		self.experience = unit_stats.experience
 		
 		self.body = unit_scene.instantiate()
 		spawn_node2d.add_child(self.body)
@@ -272,24 +272,24 @@ class Unit extends Node:
 
 class Player extends Unit:
 
-	signal player_level_up(max_exp: int)
-	signal player_exp_changed(value: int)
+	signal player_level_up(max_experience: int)
+	signal player_experience_changed(value: int)
 	signal player_health_changed(value: int)
 
 	static var player_cnt: int
 
 	var player_lv: int = 1
-	var player_max_exp: int = 100
-	var player_exp: int = 0:
+	var player_max_experience: int = 100
+	var player_experience: int = 0:
 		set(value):
-			player_exp = clamp(value, 0, player_max_exp)
-			if player_exp == player_max_exp:
+			player_experience = clamp(value, 0, player_max_experience)
+			if player_experience == player_max_experience:
 				player_lv += 1
-				player_exp = 0
-				player_max_exp += player_lv * 100
-				player_level_up.emit(player_max_exp)
+				player_experience = 0
+				player_max_experience += player_lv * 100
+				player_level_up.emit(player_max_experience)
 			else:
-				self.player_exp_changed.emit(player_exp)
+				self.player_experience_changed.emit(player_experience)
 
 	var atk_spd_pt: float:
 		set(value):
@@ -322,5 +322,5 @@ class Player extends Unit:
 
 		spawn_node2d.add_child(self.body)
 
-	func get_exp(value: int) -> void:
-		self.player_exp += value
+	func get_experience(value: int) -> void:
+		self.player_experience += value
